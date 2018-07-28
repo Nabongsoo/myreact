@@ -1,31 +1,15 @@
-import React, { Component } from 'react';
-import './App.css';
-
-class Welcome extends React.Component {
-
-  render() {
-    return (
-      <div>
-    <h1>Hello, {this.props.name}</h1> 
-    <h3>Hello, {this.props.title} </h3>
-      </div>
-    )
-  }
-}
+import React from 'react';
+import './App.css'
+import Loginform from './Components/Loginform';
 
 class App extends React.Component {
 
   render() {
     return (
       <div>
-        <Welcome name="React" title="World"></Welcome>
+       <Loginform/>
       </div>
     );
   }
 }
-
-
-
-
-
 export default App;
