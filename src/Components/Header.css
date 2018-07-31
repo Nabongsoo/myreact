@@ -1,0 +1,11 @@
+.navbar-inverse {
+    background-color: #233e65;
+    border-color: #777777;
+}
+.dropdown-menu>li>a:hover{
+    background-color: rgb(149, 186, 241)
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: #14314a;
+}
