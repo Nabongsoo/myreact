@@ -10,22 +10,30 @@ Form,
 } from 'react-bootstrap'
 
 class Loginform extends React.Component {
-  constructor(props) {
-    super(props);
-    //Khoi tao 1 trang thai thuoc tinh date
+  constructor(_props) {
+    super(_props);
+    //Khoi tao 1 trang thai thuoc tinh data
     this.state = {data : {loginname: "", password:"" }};
   }
 
-onSubmit(){
+onSubmit(_event,_keyCode){
   console.log(123, this.state.data)
   if (this.state.data.loginname === "danthuy@yahoo.com" && this.state.data.password === "abs" ){
-    this.props.onShow();
+      /* this.props.onShow();*/
+      window.location.href="/"; //dc defined trong AppRouter
   } else {
    /* alert (
       "Login Name:" + this.state.data.loginname + 
       "\nPassword:" + this.state.data.password
     ); */
   }
+}
+
+onKeyDownHandle(event){
+  if(event.keyCode == 13){
+    this.onSubmit(event, 13);
+  } 
+
 }
 
   onHandle(event) {
@@ -47,11 +55,11 @@ onSubmit(){
       <div>
       <Form horizontal>
   <FormGroup controlId="formHorizontalEmail">
-    <Col componentClass={ControlLabel} sm={2}>
+    <Col componentClass={ControlLabel} sm={2}> 
       Email
     </Col>
     <Col sm={10}>
-      <FormControl name="loginname" type="email" placeholder="Email" onChange={this.onHandle.bind(this)} />
+      <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="loginname" type="email" placeholder="Email" onChange={this.onHandle.bind(this)} />
     </Col>
   </FormGroup>
 
@@ -60,7 +68,7 @@ onSubmit(){
       Password
     </Col>
     <Col sm={10}>
-      <FormControl name="password" type="password" placeholder="Password" onChange={this.onHandle.bind(this)} />
+      <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="password" type="password" placeholder="Password" onChange={this.onHandle.bind(this)} />
     </Col>
   </FormGroup>
 

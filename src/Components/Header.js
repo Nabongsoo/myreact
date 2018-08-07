@@ -31,9 +31,9 @@ class Header extends React.Component {
                             Events
                     </NavItem>
                         <NavDropdown eventKey={3} title="Products" id="basic-nav-dropdown">
-                            <MenuItem href="/Meat" eventKey={3.1}>Meat</MenuItem>
-                            <MenuItem href="/Vegetable" eventKey={3.2}>Vegetable</MenuItem>
-                            <MenuItem href="/Fruit" eventKey={3.3}>Fruit</MenuItem>
+                            <MenuItem href="/fruit" eventKey={3.1}>Fruit</MenuItem>
+                            <MenuItem href="/vegetable" eventKey={3.2}>Vegetable</MenuItem>
+                            <MenuItem href="/sweet" eventKey={3.3}>Sweet</MenuItem>
                             <MenuItem divider />
                             <MenuItem href="/findstore" eventKey={3.3}>Find store</MenuItem>
                         </NavDropdown>
@@ -43,8 +43,8 @@ class Header extends React.Component {
                         <NavItem onClick={this.onLogout.bind(this)} eventKey={1}>
                             Log out
                      </NavItem>
-                        <NavItem eventKey={2} href="/Signin">
-                            Sign in
+                        <NavItem eventKey={2} href="/Profile">
+                            Profile
                      </NavItem>
                     </Nav>
                 </Navbar.Collapse>
@@ -56,7 +56,7 @@ class Header extends React.Component {
 
 
     onLogout(_event) {
-        // window.location.href ="/";
+         window.location.href ="/login"; //dc defined trong AppRouter
        // this.setState({ logged: false });
        this.props.onLogout();
     }
