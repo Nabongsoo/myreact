@@ -77,7 +77,18 @@ let obj = {
                 type:"Shoes",
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             }
-        ]
+        ];
+    },
+    getProduct(id){
+        let productList = this.getProductList();
+        let product = null;
+        for(let i in productList){
+            if(productList[i].id == id){
+                product = productList[i];
+                break;
+            }
+        }
+        return product;
     }
 };
     

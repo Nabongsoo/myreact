@@ -1,23 +1,26 @@
 import React from 'react';
-import DataUtils from './DataUtils'
-import './Fruit.css'
-import {Panel, Table} from 'react-bootstrap'
+import DataUtils from './DataUtils';
+import './Fruit.css';
+import {Panel, Table} from 'react-bootstrap';
+import $ from 'jquery'
 class Fruit extends React.Component {
     constructor(_props) {
         super(_props);
         this.onDetail = this.onDetail.bind(this)
     }
 
-    onDetail(){
-        window.location.href="/product/detail"
+    onDetail(event){
+        let Id = $(event.target).parent().attr("id");
+        window.location.href = "/productdetail?id="+Id;
     }
 
     buildProductList() {
         let ProductList = DataUtils.getProductList()
         let productList = [];
+
         for (let i in ProductList) {
             productList.push(
-                <tr key={i} onDoubleClick={this.onDetail}>
+                <tr key={i} id={ProductList[i].id} onDoubleClick={this.onDetail}>
                     <td>{parseInt(i) + 1}</td>
                     <td>{ProductList[i].image}</td>
                     <td>{ProductList[i].name}</td>
