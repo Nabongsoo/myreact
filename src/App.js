@@ -25,15 +25,21 @@ class App extends React.Component {
       }
       return LoginForm;
     }*/
-      constructor(props) {
-        super(props);
+      constructor(_props) {
+        super(_props);
+        this.state = {logged:true}
+      }
+
+      onLogout(_event){
+        this.setState({logged:false});
+        window.location.href="/login"
       }
 
       render() {
        // let Loginform = this.buildLoginform();
         return (
           <div>
-            <AppRouter/>
+            <AppRouter onLogout={this.onLogout.bind(this)} isLogged={this.state.logged}/>
             {/*<Header logged={this.state.logged} onLogout={this.onLogout.bind(this)} /> */}
             {/*Loginform*/} 
           </div>

@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from './Header';
-
 
 class Sweet extends React.Component {
     constructor(_props){
@@ -11,7 +9,7 @@ class Sweet extends React.Component {
     render(){
         return (
             <div>
-                <Header logged={this.state.logged} onClick={(e)=>{}} />
+                
 
                 <div>
                     

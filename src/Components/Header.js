@@ -1,6 +1,5 @@
 import React from 'react';
 import './Header.css';
-
 import {
     Navbar,
     MenuItem,
@@ -13,9 +12,38 @@ class Header extends React.Component {
 
     constructor(_props) {
         super(_props);
+        this.state = {
+            logged: false,
+            userinfo: {
+                email: "",
+                name: ""
+            }
+        };
+        // this.state = { logged: this.state.logged };
 
-       // this.state = { logged: this.state.logged };
+        let session = this.getSession();
+        if (session !== null) {
+            this.state.userinfo.email = session.email;
+            this.state.userinfo.name = session.name;
+            this.state.logged = true;
+        }
+        console.log(this.state)
+    }
 
+    componentDidMount() {
+        if (this.state.logged === false) {
+            if (window.location.pathname != "/login") {
+                window.location.href = "/login";
+            }
+        }
+    }
+
+    getSession() {
+        let session = window.localStorage.getItem("session");
+        if (session != null) {
+            return JSON.parse(session);
+        }
+        return null;
     }
 
     buildMenus() {
@@ -24,10 +52,10 @@ class Header extends React.Component {
             menus.push((
                 <Navbar.Collapse key={1}>
                     <Nav>
-                        <NavItem eventKey={1} href="#">
-                            Our Story
-                    </NavItem>
-                        <NavItem eventKey={2} href="#">
+                        <NavDropdown eventKey={3} title="Managerment" id="basic-nav-dropdown">
+                            <MenuItem href="/ourstory" eventKey={3.1}>UserList</MenuItem>
+                        </NavDropdown>
+                        <NavItem eventKey={2} href="/event">
                             Events
                     </NavItem>
                         <NavDropdown eventKey={3} title="Products" id="basic-nav-dropdown">
@@ -40,12 +68,14 @@ class Header extends React.Component {
                     </Nav>
 
                     <Nav pullRight>
-                        <NavItem onClick={this.onLogout.bind(this)} eventKey={1}>
-                            Log out
+                        <NavDropdown eventKey={4} title={this.state.userinfo.name} id="nav-profile">
+                            <NavItem onClick={this.onLogout.bind(this)} eventKey={1}>
+                                Log out
                      </NavItem>
-                        <NavItem eventKey={2} href="/Profile">
-                            Profile
+                            <NavItem eventKey={2} href="/profile">
+                                Profile
                      </NavItem>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             ))
@@ -54,30 +84,39 @@ class Header extends React.Component {
 
     }
 
-
     onLogout(_event) {
-         window.location.href ="/login"; //dc defined trong AppRouter
-       // this.setState({ logged: false });
-       this.props.onLogout();
+        window.localStorage.removeItem("session");
+        window.location.href = "/login"; //dc defined trong AppRouter
+        _event.preventDefault();
+        // this.setState({ logged: false });
+        // this.props.onLogout();
     }
-
 
     render() {
         let menus = this.buildMenus();
-        
-        return (
-            <div fluid="true">
-                <Navbar inverse collapseOnSelect>
+        let headerTemplate = [];
+        if (this.state.logged === true && window.location.pathname != "/login") {
+            menus = this.buildMenus();
+            headerTemplate.push((
+                <Navbar key={1} fluid={true} inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="/">Home</a>
+                            <a href="/">
+                                <img className="app-logo" src="/image/logo.png" />
+                            </a>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
 
                     {menus}
                 </Navbar>
-               
+
+            ));
+        }
+
+        return (
+            <div>
+                {headerTemplate}
             </div>
         );
     }

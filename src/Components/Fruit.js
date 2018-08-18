@@ -1,72 +1,62 @@
 import React from 'react';
-import Header from './Header'
-
+import DataUtils from './DataUtils'
+import './Fruit.css'
+import {Panel, Table} from 'react-bootstrap'
 class Fruit extends React.Component {
-    constructor(_props){
+    constructor(_props) {
         super(_props);
-        this.state = {logged: true};
+        this.onDetail = this.onDetail.bind(this)
+    }
+
+    onDetail(){
+        window.location.href="/product/detail"
+    }
+
+    buildProductList() {
+        let ProductList = DataUtils.getProductList()
+        let productList = [];
+        for (let i in ProductList) {
+            productList.push(
+                <tr key={i} onDoubleClick={this.onDetail}>
+                    <td>{parseInt(i) + 1}</td>
+                    <td>{ProductList[i].image}</td>
+                    <td>{ProductList[i].name}</td>
+                    <td>{ProductList[i].type}</td>
+                    <td>{ProductList[i].price}</td>
+                    <td>{ProductList[i].description}</td>
+                </tr>
+            )
         }
-   
-     render(){
+        return productList
+    }
+
+    render() {
+        let productList = this.buildProductList();
         return (
-            <div>
-            <Header logged={this.state.logged} onClick={(e)=>{}} /> 
-            
-            <div class="row">
-            
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
-            </div>
-            
-            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            
-                <div className="thumbnail">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/fruit-salad-horizontal-jpg-1522181219.jpg" alt="fruit"/>
-                    <div className="caption">
-                        <h2>Title</h2>
-                        <p>
-                            ...
-                        </p>
-                        <p>
-                            <a  className="btn btn-primary">Buy now</a>
-                            <a  className="btn btn-default">Add to card</a>
-                        </p>
-                    </div>
-                </div>
+            <Panel bsStyle="primary">
+                <Panel.Heading>
+                    <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                    <Table striped bordered condensed hover>
+                        <thead>
+                            <tr>
+                                <th>Index</th>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {productList}
+                        </tbody>
+                    </Table>
+                </Panel.Body>
+            </Panel>
 
-                <div className="thumbnail">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/fruit-salad-horizontal-jpg-1522181219.jpg" alt="fruit"/>
-                    <div className="caption">
-                        <h2>Title</h2>
-                        <p>
-                            ...
-                        </p>
-                        <p>
-                            <a  className="btn btn-primary">Buy now</a>
-                            <a  className="btn btn-default">Add to card</a>
-                        </p>
-                    </div>
-                </div>
-
-                <div className="thumbnail">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/fruit-salad-horizontal-jpg-1522181219.jpg" alt="fruit"/>
-                    <div className="caption">
-                        <h2>Title</h2>
-                        <p>
-                            ...
-                        </p>
-                        <p>
-                            <a  className="btn btn-primary">Buy now</a>
-                            <a  className="btn btn-default">Add to card</a>
-                        </p>
-                    </div>
-                </div>
-                
-            </div>
-                
-            </div>
-            </div>
-           
         );
     }
 }
-  export default Fruit;
+export default Fruit;
