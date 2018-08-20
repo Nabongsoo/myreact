@@ -1,0 +1,26 @@
+section{
+    background-image: "/image/BACKGROUND.png";
+    width: 1356px;
+    height: 758px;
+    margin-top: -75px;
+    margin-left: 128px;
+    
+}
+.Title-text {
+    text-align: left;
+    height: 100px;
+    margin-top: 100px;
+    font-size: 90pt;
+    width: 50px;
+    font-family: "Calisto MT", Calisto MT-regular;
+    line-height: 120px;
+}
+
+button, input, select, textarea {
+    /* font-size: 36pt; */
+    font-family: inherit;
+    /* font-size: inherit; */
+    line-height: inherit;
+    width: 300px;
+    font-size: 23pt;
+}

@@ -1,4 +1,8 @@
 import React from 'react';
+import "./Home.css"
+
+
+let imgUrl = 'image/BACKGROUND.png'
 
 class Home extends React.Component {
     constructor(_props){
@@ -8,21 +12,29 @@ class Home extends React.Component {
 
     render(){
         return (
+           
             
             <div className="container-fluid">
-                
+             
+            <div className="row">
+                <div className="col-xs- col-sm-12 col-md- col-lg-"> 
+                <section  style = {{ backgroundImage: 'url(' + imgUrl + ')', 
+                backgroundSize: '1356px 758px',
+                backgroundPosition: 'right top',
+                backgroundRepeat: 'no-repeat',
+                }}>
+
                 <div className="row">
-                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        
-                        <input type="date" name="" id="input${1/(\w+)/\u\1/g}" className="form-control" value="" required="required" title=""/>
-                        
-                    </div>
-                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        
-                        <img src="https://pay.google.com/about/static/images/social/og_image.jpg" className="img-responsive" alt="Image"/>
-                        
-                    </div>
+                <div className="col-xs- col-sm- col-md- col-lg-"> 
+                <div className="Title-text">
+                    <h1/>Organic House<br></br>
                 </div>
+                
+                </div>
+                </div>
+                </section>
+                </div>
+            </div>
                 
             </div>
             

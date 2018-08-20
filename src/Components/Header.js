@@ -27,7 +27,7 @@ class Header extends React.Component {
             this.state.userinfo.name = session.name;
             this.state.logged = true;
         }
-        console.log(this.state)
+       
     }
 
     componentDidMount() {

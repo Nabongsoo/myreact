@@ -83,7 +83,7 @@ let obj = {
         let productList = this.getProductList();
         let product = null;
         for(let i in productList){
-            if(productList[i].id == id){
+            if(productList[i].id === id){
                 product = productList[i];
                 break;
             }
