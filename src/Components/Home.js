@@ -13,8 +13,8 @@ class Home extends React.Component {
     render(){
         return (
            
-            
-            <div className="container-fluid">
+            <div>adasdasd</div>
+         /*   <div className="container-fluid">
              
             <div className="row">
                 <div className="col-xs- col-sm-12 col-md- col-lg-"> 
@@ -36,7 +36,7 @@ class Home extends React.Component {
                 </div>
             </div>
                 
-            </div>
+            </div> */
             
         );
     }

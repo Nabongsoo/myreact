@@ -1,0 +1,29 @@
+.product-detail{
+    width: 450px;
+}
+
+.des-name  .list-group-item-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+.detail-des li:first-child {
+    border-bottom: 0px;
+}
+.detail-des li:last-child {
+    border-bottom: 0px;
+}
+.detail-des li {
+    border-left: 0px;
+    border-right: 0px;
+}
+.des-price .list-group-item-heading {
+    color: brown;
+}
+.list-group {
+    padding-left: 0;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+

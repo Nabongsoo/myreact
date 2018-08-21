@@ -60,7 +60,7 @@ class AppRouter extends React.Component {
                 <Route key={5} exact path="/vegetable" component = {Vegetable}/>
                 <Route key={6} exact path="/ourstory" component = {Ourstory}/>
                 <Route key={7} exact path="/profile" component = {Profile}/>
-                <Route key={8} exact path="/product/detail" component = {ProductDetail}/>
+                <Route key={8} exact path="/productdetail" component = {ProductDetail}/>
                
                 </Switch>
             </Router>

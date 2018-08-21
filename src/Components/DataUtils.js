@@ -56,25 +56,31 @@ let obj = {
             {
                 id: 1,
                 name:"Nike COrtez Red-White",
-                image:"./.jpg",
-                price:"$70",
+                image:"/image/RW.jpg",
+                price: 70,
                 type:"Shoes",
+                company: "Nike",
+                saleoff: 50,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
                 id:2,
                 name:"Nike COrtez Black-White",
-                image:"./B-W.jpg",
-                price:"$80",
+                image:"/image/B-W.jpg",
+                price: 80,
                 type:"Shoes",
+                company: "Nike",
+                saleoff: 50,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
                 id:3,
                 name:"Nike COrtez Black",
-                image: "/BLACK.jpg",
+                image: "image/BLACK.jpg",
                 price:"$70",
                 type:"Shoes",
+                company: "Nike",
+                saleoff: 50,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             }
         ];
