@@ -10,9 +10,11 @@ class Fruit extends React.Component {
     }
 
     onDetail(event){
+        console.log("event")
         let Id = $(event.target).parent().attr("id");
         window.location.href = "/productdetail?id="+Id;
     }
+    
 
     buildProductList() {
         let ProductList = DataUtils.getProductList()

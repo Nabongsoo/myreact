@@ -1,35 +1,107 @@
 import React from 'react'
 import DataUtils from './DataUtils';
 import queryString from 'query-string'
-import { Row, Col, Grid, Image, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Row, Col, Grid, Image, ListGroup, ListGroupItem, Button, ButtonToolbar, FormControl, FormGroup, ControlLabel, Panel,HelpBlock } from 'react-bootstrap'
 import "./ProductDetail.css"
 import CurrencyFormat from 'react-currency-format';
 
+function FieldGroup({ id, label, help, ...props }) {
+    return (
+      <FormGroup controlId={id}>
+        <ControlLabel>{label}</ControlLabel>
+        <FormControl {...props} />
+        {help && <HelpBlock>{help}</HelpBlock>}
+      </FormGroup>
+    );
+  }
 class ProductDetail extends React.Component {
     constructor(_props) {
         super(_props);
-        this.state = { Id: null, info: null };
+        this.state = { Id: null, info: null, isEdit: false};
         this.state.Id = this.getIdFromQueryString();
         this.state.info = this.getProduct();
 
     }
 
-    componentDidMount() {
+    onEdit(_event) {
+        this.setState({isEdit:true})
+    }
 
+    buildeditproductTemplate(){
+        const formInstance = (
+            <form>
+              <FieldGroup
+                id="formControlsText"
+                type="text"
+                label="Text"
+                placeholder="Enter text"
+              />
+              <FieldGroup
+                id="formControlsEmail"
+                type="email"
+                label="Email address"
+                placeholder="Enter email"
+              />
+              <FieldGroup id="formControlsPassword" label="Password" type="password" />
+              <FieldGroup
+                id="formControlsFile"
+                type="file"
+                label="File"
+                help="Example block-level help text here."
+              />
+          
+              <FormGroup controlId="formControlsSelect">
+                <ControlLabel>Select</ControlLabel>
+                <FormControl componentClass="select" placeholder="select">
+                  <option value="select">select</option>
+                  <option value="other">...</option>
+                </FormControl>
+              </FormGroup>
+
+              <FormGroup controlId="formControlsSelectMultiple">
+                <ControlLabel>Multiple select</ControlLabel>
+                <FormControl componentClass="select" multiple>
+                  <option value="select">select (multiple)</option>
+                  <option value="other">...</option>
+                </FormControl>
+              </FormGroup>
+          
+              <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>Textarea</ControlLabel>
+                <FormControl componentClass="textarea" placeholder="textarea" />
+              </FormGroup>
+          
+              <FormGroup>
+                <ControlLabel>Static text</ControlLabel>
+                <FormControl.Static>email@example.com</FormControl.Static>
+              </FormGroup>
+          
+              <Button type="submit">Submit</Button>
+            </form>
+          );
+          return formInstance;
+    }
+    
+    
+    componentDidMount() {
+        console.log( window.jQuery(".product-image"))
+       window.jQuery(".product-image").elevateZoom()
+        
     }
 
     buildProductDetail() {
         let productDetail = [];
         let product = this.getProduct();
-        if (product != null) {
+        if (product !== null) {
             productDetail.push(
-                <div>
+                <div key={1}>
                     <span>Name: {product.name} </span>
                     <span>Name: {product.type} </span>
                     <span>Name: {product.price} </span>
                 </div>
             );
         }
+        return productDetail;
     }
 
     getProduct() {
@@ -57,7 +129,8 @@ class ProductDetail extends React.Component {
         if (this.state.info !== null) {
             imageTemplate.push(
                 <div key={1}>
-                    <Image src={this.state.info.image} responsive />
+                    <Image className="product-image" src={this.state.info.image} responsive />
+                    
                 </div>
             )
         }
@@ -101,6 +174,28 @@ class ProductDetail extends React.Component {
     }
 
     render() {
+        if(this.state.isEdit === true) {
+            let editTemplate = this.buildeditproductTemplate();
+        return (
+            <div>
+            <Panel className="page-panel product-detail" bsStyle="primary" >
+                <Panel.Heading>
+                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                    <Grid fluid={false}>
+                        <Row className="show-grid">
+                        <Col className="product-edit"  xs={12} sm={5} md={5}>
+                        {editTemplate}
+                        </Col>
+                        </Row>
+                    </Grid>    
+                </Panel.Body>
+            </Panel>
+            </div>
+        );
+    }
+
         let imageTemplate = this.buildImage()
         let productDetail = this.buildProductDetail();
         let desTemp = this.buildDescription();
@@ -115,6 +210,14 @@ class ProductDetail extends React.Component {
                             {desTemp}
                         </Col>
                     </Row>
+                        <Col  xs={12} sm={5} md={5} ></Col>
+                        <Col  xs={12} sm={5} md={5} >
+                        <ButtonToolbar>
+                        <Button onClick= {this.onEdit.bind(this)} bsStyle="primary" bsSize="large">
+                        Edit
+                        </Button>
+                        </ButtonToolbar>
+                        </Col>
                 </Grid>
                 {productDetail}
             </div>
