@@ -26,4 +26,11 @@
     margin-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.product-detail {
+    width: 470px;
+    margin: auto;
+}
+.product-detail-edit{
+    margin-left: 10px;
+    margin-right: 5px;
+}

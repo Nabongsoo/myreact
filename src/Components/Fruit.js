@@ -1,12 +1,17 @@
 import React from 'react';
 import DataUtils from './DataUtils';
 import './Fruit.css';
-import {Panel, Table} from 'react-bootstrap';
+import {Panel, Table, Button, ButtonToolbar} from 'react-bootstrap';
 import $ from 'jquery'
+
 class Fruit extends React.Component {
     constructor(_props) {
         super(_props);
         this.onDetail = this.onDetail.bind(this)
+    }
+
+    onCreateNew (event){
+        window.location.href = "/productdetail?id=0";
     }
 
     onDetail(event){
@@ -29,6 +34,7 @@ class Fruit extends React.Component {
                     <td>{ProductList[i].type}</td>
                     <td>{ProductList[i].price}</td>
                     <td>{ProductList[i].description}</td>
+                    <td>{ProductList[i].saleoff}</td>
                 </tr>
             )
         }
@@ -43,6 +49,13 @@ class Fruit extends React.Component {
                     <Panel.Title componentClass="h3">Panel heading</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
+
+                <ButtonToolbar>
+                <Button type="button" onClick={this.onCreateNew.bind(this)} bsStyle="primary" bsSize="large">
+                    Create New
+                </Button>
+                </ButtonToolbar>;
+
                     <Table striped bordered condensed hover>
                         <thead>
                             <tr>
@@ -52,6 +65,8 @@ class Fruit extends React.Component {
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Description</th>
+                                <th>Saleoff</th>
+
                             </tr>
                         </thead>
                         <tbody>

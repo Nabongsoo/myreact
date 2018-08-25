@@ -1,5 +1,18 @@
 
 let obj = {
+
+    saveProduct(_data){
+        //call api
+    },
+
+    removeProduct(_data){
+
+    },
+
+    createProduct(){
+
+    },
+
     getUserList(){
         return [
         {
