@@ -6,3 +6,36 @@ div {
     font-family: sans-serif;
     /* align-items: inherit; */
 }
+
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 14px;
+    line-height: 1.3333333;
+    border-radius: 28px;
+    float: right;
+    margin-top: -5px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #778c9e;
+    border-color: #d9dfe4;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #4b94d4;
+    border-color: #204d74;
+}
+.panel-primary>.panel-heading {
+    margin: 100px 0px 0px 0px;
+    height: 60px;
+    color: #fff;
+    background-color: #475867;
+    border-color: #778c9e;
+}
+.panel-heading {
+    padding: 14px 15px;
+}
+.panel-body {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+}

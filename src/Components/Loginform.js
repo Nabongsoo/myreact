@@ -1,6 +1,8 @@
 import React from 'react';
 import DataUtils from './DataUtils'
+import './Loginform.css'
 import {
+  Label,
   Col,
   FormGroup,
   Checkbox,
@@ -9,6 +11,8 @@ import {
   ControlLabel,
   Form,
 } from 'react-bootstrap';
+
+let imgUrl = 'image/plantback.jpeg';
 
 class Loginform extends React.Component {
   constructor(_props) {
@@ -22,10 +26,15 @@ class Loginform extends React.Component {
     let session = this.getSession();
     if (session !== null) {
       this.state.logged = true;
-
     }
     console.log(this.state)
     this.onKeyDownHandle = this.onKeyDownHandle.bind(this);
+  }
+
+  onKeyDownHandle(event) {
+    if (event.keyCode == 13) {
+      this.onSubmit(event, 13);
+    }
   }
 
   componentWillMount(_event) {
@@ -48,19 +57,12 @@ class Loginform extends React.Component {
       alert("NOPE");
     } else {
       let userInfo = DataUtils.checkUser(this.state.data.loginname, this.state.data.password);
-      if (userInfo != null) {
+      if (userInfo !== null) {
         window.localStorage.setItem("session", JSON.stringify(userInfo));
         window.location.href = "/";
       }
 
     };
-
-  }
-
-  onKeyDownHandle(event) {
-    if (event.keyCode == 13) {
-      this.onSubmit(event, 13);
-    }
 
   }
 
@@ -80,22 +82,32 @@ class Loginform extends React.Component {
 
   render() {
     return (
-      <div className="Loginf">
-        <Form horizontal>
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
+      <div>
+    
+      <div className="Login">
+      <section  style = {{ backgroundImage: 'url(' + imgUrl + ')', 
+                backgroundSize: '1356px 758px',
+                backgroundPosition: 'right top',
+                backgroundRepeat: 'no-repeat',
+                }}></section>
+        
+        <Form className="form-horizontal" horizontal>
+        <legend><h1 className="login">ADMINISTRATION</h1></legend>
+        
+          <FormGroup className="Email" controlId="formHorizontalEmail">
+            <Col componentClass={ControlLabel}  sm={2}  >
               Email
             </Col>
-            <Col sm={3}>
+            <Col sm={10} md={10}>
               <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="loginname" type="email" placeholder="Email" onChange={this.onHandle.bind(this)} />
             </Col>
           </FormGroup>
 
-          <FormGroup controlId="formHorizontalPassword">
+          <FormGroup className="Pass" controlId="formHorizontalPassword">
             <Col componentClass={ControlLabel} sm={2}>
               Password
             </Col>
-            <Col sm={3}>
+            <Col sm={10} md={10}>
               <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="password" type="password" placeholder="Password" onChange={this.onHandle.bind(this)} />
             </Col>
           </FormGroup>
@@ -112,7 +124,10 @@ class Loginform extends React.Component {
             </Col>
           </FormGroup>
         </Form>
+       
       </div>
+      </div>
+      
     );
   }
 }

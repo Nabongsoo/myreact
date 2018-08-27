@@ -29,7 +29,7 @@ class Fruit extends React.Component {
             productList.push(
                 <tr key={i} id={ProductList[i].id} onDoubleClick={this.onDetail}>
                     <td>{parseInt(i) + 1}</td>
-                    <td>{ProductList[i].image}</td>
+                    <td>{ProductList[i].img}</td>
                     <td>{ProductList[i].name}</td>
                     <td>{ProductList[i].type}</td>
                     <td>{ProductList[i].price}</td>
@@ -44,19 +44,19 @@ class Fruit extends React.Component {
     render() {
         let productList = this.buildProductList();
         return (
+            
+            <div className="container">
+
             <Panel bsStyle="primary">
                 <Panel.Heading>
-                    <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                    <Panel.Title componentClass="h3">Products' List
+                    <Button type="button" 
+                    onClick={this.onCreateNew.bind(this)} bsStyle="primary" bsSize="large">
+                    Create New</Button></Panel.Title>
                 </Panel.Heading>
+
                 <Panel.Body>
-
-                <ButtonToolbar>
-                <Button type="button" onClick={this.onCreateNew.bind(this)} bsStyle="primary" bsSize="large">
-                    Create New
-                </Button>
-                </ButtonToolbar>;
-
-                    <Table striped bordered condensed hover>
+                    <Table striped bordered condensed hover >
                         <thead>
                             <tr>
                                 <th>Index</th>
@@ -65,7 +65,7 @@ class Fruit extends React.Component {
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Description</th>
-                                <th>Saleoff</th>
+                                <th>Sale off</th>
 
                             </tr>
                         </thead>
@@ -75,7 +75,7 @@ class Fruit extends React.Component {
                     </Table>
                 </Panel.Body>
             </Panel>
-
+            </div>
         );
     }
 }

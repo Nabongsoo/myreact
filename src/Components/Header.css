@@ -1,5 +1,5 @@
 .navbar-inverse {
-    background-color: rgba(255, 255, 255, 0.151) ;
+    background-color: rgba(253, 253, 253, 0.47);
     border-color: #ffffff00;
 }
 .dropdown-menu>li>a:hover{
@@ -8,4 +8,93 @@
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
     color: rgb(51, 51, 51);
     background-color: white;
+}
+button.navbar-toggle.collapsed {
+    /* font-size: 36pt; */
+    font-family: inherit;
+    /* font-size: inherit; */
+    line-height: inherit;
+     width: 50px;
+    font-size: 23pt;
+}
+button.navbar-toggle {
+    /* font-size: 36pt; */
+    font-family: inherit;
+    /* font-size: inherit; */
+    line-height: inherit;
+    width: 50px;
+    font-size: 23pt;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #ffffff00;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #bbb;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: rgba(255, 255, 255, 0);
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #ffffff00;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    font-size: 12pt;
+}
+div.dropdown{
+  margin-top: -238px;
+  margin-left: 23px;
+  line-height: 27px;
+}
+img.exback{
+    margin-top: -5px;
+    height: 245px;
+}
+.navbar-nav {
+    margin: auto;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+.dropdown-menu {
+    padding: 19px 0;
+    border: 0px solid #ccc;
+    border: 0px solid rgba(0,0,0,.15);
+}
+
+.navbar-nav>li>.dropdown-menu {
+    height: 259px;
+}
+a{
+    color: rgb(241, 248, 255);
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    padding-bottom: 2px;
+}
+h2{
+    margin-top: 6px;
+    font-weight: normal;
+    color: #153852;
+    margin-bottom: 20px;
+    
+}
+.navbar-inverse .navbar-nav>li>a {
+    font: MavenPro-Bold;
+    color: #1b4e67;
+    font-weight: bolder;
+    font-size: 12pt; 
+}
+NavItem.saleoff{
+    color: rgb(247, 0, 0);
+}
+.navbar-nav>li>.dropdown-menu{
+    height: 150px;
+    box-shadow: 0px 0px 0px;
+}
+img.exback {
+    margin-top: -5px;
+    height: 245px;
+    box-shadow: 4px 4px 13px #27313e23;
+}
+.dropdown-menu{
+        box-shadow: 0px;
+        -webkit-box-shadow: 0px;
 }

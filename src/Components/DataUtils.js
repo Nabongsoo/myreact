@@ -17,8 +17,8 @@ let obj = {
         return [
         {
             email: "danthuy@yahoo.com",
-            firstname: "Dan",
-            lastname: "DAN",
+            firstname: "Jenni",
+            lastname: " Dan",
             password: "aaa"
         },
         {
@@ -69,7 +69,7 @@ let obj = {
             {
                 id: 1,
                 name:"Nike COrtez Red-White",
-                image:"/image/RW.jpg",
+                image:"image/RW.jpg",
                 price: 70,
                 type:"Shoes",
                 company: "Nike",
@@ -79,7 +79,7 @@ let obj = {
             {
                 id:2,
                 name:"Nike COrtez Black-White",
-                image:"/image/B-W.jpg",
+                image: "image/B-W.jpg",
                 price: 80,
                 type:"Shoes",
                 company: "Nike",
