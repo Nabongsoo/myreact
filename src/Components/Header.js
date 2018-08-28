@@ -156,7 +156,7 @@ class Header extends React.Component {
         if (this.state.logged === true && window.location.pathname != "/login") {
             menus = this.buildMenus();
             headerTemplate.push((
-                <Navbar key={1} fixedTop={true} fluid={true} inverse collapseOnSelect>
+                <Navbar key={1} fluid={true} inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="/">

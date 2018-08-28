@@ -39,7 +39,7 @@ class Loginform extends React.Component {
 
   componentWillMount(_event) {
     if (this.state.logged === true) {
-      window.location.href = "/";
+      window.location.href = "/admin";
     }
   }
 
@@ -59,7 +59,7 @@ class Loginform extends React.Component {
       let userInfo = DataUtils.checkUser(this.state.data.loginname, this.state.data.password);
       if (userInfo !== null) {
         window.localStorage.setItem("session", JSON.stringify(userInfo));
-        window.location.href = "/";
+        window.location.href = "/admin";
       }
 
     };

@@ -4,6 +4,8 @@ import Loadable from 'react-loadable';
 import Header from './Header';
 import Profile from './Profile';
 import ProductDetail from './ProductDetail'
+import Index from './Public/Index'
+import MenuCatalog from './Public/MenuCatalog';
 
 const Loading = () => <div>Loading...</div>;
 
@@ -44,16 +46,17 @@ class AppRouter extends React.Component {
     
     render() {
         let headerelement =[];
-        if (this.props.islogged === true){
+        //if (this.props.islogged === true){
             headerelement.push(<Header key={1} logged={true} onClick={this.props.onLogout} />);
-        }
+        //}
         return (
             <div>
-            <Header key={1} logged={true} onClick={this.props.onLogout} />
+            
             {headerelement}
             <Router>
                 <Switch>
-                <Route key={1} exact path="/" component = {Home}/> 
+                <Route key={1} exact path="/" component = {Index}/> 
+                <Route key={1} exact path="/admin" component = {MenuCatalog}/> 
                 <Route key={2} exact path="/login" component = {Login}/>
                 <Route key={3} exact path="/fruit" component = {Fruit}/>
                 <Route key={4} exact path="/sweet" component = {Sweet}/>
