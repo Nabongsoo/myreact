@@ -74,6 +74,7 @@ let obj = {
                 type:"Shoes",
                 company: "Nike",
                 saleoff: 50,
+                Catalogid: 1,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -84,6 +85,7 @@ let obj = {
                 type:"Shoes",
                 company: "Nike",
                 saleoff: 50,
+                Catalogid: 2,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -94,9 +96,22 @@ let obj = {
                 type:"Shoes",
                 company: "Nike",
                 saleoff: 50,
+                Catalogid: 3,
                 description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             }
         ];
+        
+        if (type != undefined){
+            let tmp =[];
+            for (let index in data){
+                if(data[index].Catalogid == type){
+                    tmp.push(data[index]);
+                }
+                
+            }
+            data = tmp
+        }
+        return data
     },
     getProduct(id){
         let productList = this.getProductList();
