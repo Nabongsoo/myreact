@@ -16,7 +16,7 @@ buildProductList() {
     let productList = [];
     for (let index in productData){
         productList.push(
-        <Col key={index} xs={12} md={3}>
+        <Col key={index} >
          <Product2  data = {productData[index]}/>
          </Col>
         )
@@ -31,7 +31,7 @@ buildProductList() {
     }
     if(productList.length && productList.length < Number_of_row){
         productListTemp.push(
-            <Row key={"last-row"}>
+            <Row key={"row-last"}>
                 {productList}
                 </Row>
         )
@@ -45,7 +45,7 @@ buildProductList() {
                     <Grid>
                     <Row>
                         <Col xs={6} md={4}>
-                        <productList/>
+                        {productList}
                         </Col>
                     </Row>
                     </Grid>

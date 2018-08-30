@@ -99,7 +99,7 @@ class Loginform extends React.Component {
               Email
             </Col>
             <Col sm={10} md={10}>
-              <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="loginname" type="email" placeholder="Email" onChange={this.onHandle.bind(this)} />
+              <FormControl id="email" onKeyUp={this.onKeyDownHandle.bind(this)} name="loginname" type="email" placeholder="Email" onChange={this.onHandle.bind(this)} />
             </Col>
           </FormGroup>
 
@@ -108,7 +108,7 @@ class Loginform extends React.Component {
               Password
             </Col>
             <Col sm={10} md={10}>
-              <FormControl onKeyUp={this.onKeyDownHandle.bind(this)} name="password" type="password" placeholder="Password" onChange={this.onHandle.bind(this)} />
+              <FormControl id="password" onKeyUp={this.onKeyDownHandle.bind(this)} name="password" type="password" placeholder="Password" onChange={this.onHandle.bind(this)} />
             </Col>
           </FormGroup>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuCatalog from './MenuCatalog'
 import ProductList from './ProductList'
-import {Panel, Col, Row, Grid} from 'react-bootstrap'
+import {Panel, Col, Row, Grid, Breadcrumb} from 'react-bootstrap'
 
 class Index extends React.Component {
     constructor(_props) {
@@ -10,12 +10,15 @@ class Index extends React.Component {
             path:"",
             type:0,
         }
+        if (this.props.type != undefined){
+            this.state.type = this.props.type;
+        }
     }
 
     onMenuClick(id){
-        this.setState (
-            
-        )
+        this.setState ({
+            type: id
+        })
     }
 
     buildBreadcrumb(){
@@ -23,24 +26,25 @@ class Index extends React.Component {
         template.push(
             <Breadcrumb.Item key={0} href="/">Home </Breadcrumb.Item>
         )
-        let template = [];
-        template.push(
-            <Breadcrumb.Item key={0} href="/">Home </Breadcrumb.Item>
-        )
-    }
+        if(this.state.path != "") {
+            template.push(
+                <Breadcrumb.Item key={1} href="#">Trang Chủ</Breadcrumb.Item>
+            )
+            }
+            return template;
+        }
 
     render() {
-
+        let breadcrumb = this.buildBreadcrumb();
         return (
                 <div>
-                <Panel bsStyle="primary">
+                <Panel bsStyle="primary" className="app-product">
                     <Panel.Heading>
 
-                    <Panel.Title componentClass="h3">
+                    <Panel.Title>
                     <Breadcrumb>
-                        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-                        <Breadcrumb.Item active>{this.state.path}</Breadcrumb.Item>
-                        </Breadcrumb>;
+                      {breadcrumb}
+                    </Breadcrumb>
                     </Panel.Title>
 
                     </Panel.Heading>

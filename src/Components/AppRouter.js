@@ -56,7 +56,9 @@ class AppRouter extends React.Component {
             <Router>
                 <Switch>
                 <Route key={1} exact path="/" component = {Index}/> 
-                <Route key={1} exact path="/admin" component = {MenuCatalog}/> 
+                <Route key={9} exact path="/glasses A" component = {()=> (<Index type={1} />)}/>
+                <Route key={10} exact path="/glasses B" component = {()=> (<Index type={2} />)}/>
+                <Route key={11} exact path="/admin" component = {MenuCatalog}/> 
                 <Route key={2} exact path="/login" component = {Login}/>
                 <Route key={3} exact path="/fruit" component = {Fruit}/>
                 <Route key={4} exact path="/sweet" component = {Sweet}/>

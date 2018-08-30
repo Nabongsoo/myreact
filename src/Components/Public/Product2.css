@@ -3,4 +3,8 @@
     padding-left: 60px;
     width: 530px;
 }
+button.btn.btn-default {
+    float: right;
+    margin-right: 0px;
+}
 

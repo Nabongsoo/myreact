@@ -58,12 +58,12 @@ class Header extends React.Component {
                         <img className="exback" src="image/exback7.jpg"/>
                         <div className="dropdown">
                             <h2>Women's Glasses</h2>
-                            <MenuItem href="/ourstory" eventKey={2.1}>SunGlasses</MenuItem>
-                            <MenuItem href="/ourstory" eventKey={2.1}>EyeGlasses</MenuItem>
-                            <MenuItem href="/ourstory" eventKey={2.2}>New Arrivals</MenuItem>
-                            <MenuItem href="/ourstory" eventKey={2.2}>Best Sellers</MenuItem>
-                            <MenuItem href="/ourstory" eventKey={2.2}>Shop By Style</MenuItem>
-                            <MenuItem href="/ourstory" eventKey={2.2}>View All Women's Glasses</MenuItem>
+                            <MenuItem href="/glasses A" eventKey={2.1}>SunGlasses</MenuItem>
+                            <MenuItem href="/glasses B" eventKey={2.2}>EyeGlasses</MenuItem>
+                            <MenuItem href="/ourstory" eventKey={2.3}>New Arrivals</MenuItem>
+                            <MenuItem href="/ourstory" eventKey={2.4}>Best Sellers</MenuItem>
+                            <MenuItem href="/ourstory" eventKey={2.5}>Shop By Style</MenuItem>
+                            <MenuItem href="/ourstory" eventKey={2.6}>View All Women's Glasses</MenuItem>
                         </div>
                         </NavDropdown>
 
