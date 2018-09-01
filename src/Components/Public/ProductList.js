@@ -20,7 +20,7 @@ buildProductList() {
          <Product2  data = {productData[index]}/>
          </Col>
         )
-        if (productList.length == Number_of_row){
+    if (productList.length == Number_of_row){
             productListTemp.push(
                 <Row key={"row" + index}>
                 {productList}
@@ -31,7 +31,7 @@ buildProductList() {
     }
     if(productList.length && productList.length < Number_of_row){
         productListTemp.push(
-            <Row key={"row-last"}>
+            <Row key={"row"}>
                 {productList}
                 </Row>
         )
@@ -41,10 +41,11 @@ buildProductList() {
     render() {
         let productList = this.buildProductList()
         return (
+            
                 <div>
                     <Grid>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={12} md={3}>
                         {productList}
                         </Col>
                     </Row>

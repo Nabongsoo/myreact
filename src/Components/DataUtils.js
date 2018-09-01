@@ -134,6 +134,17 @@ let obj = {
                 Catalogid: 3,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
+            {
+                id: 6,
+                name: "Nike COrtez Black-White",
+                image: "image/B-W.jpg",
+                price: 80,
+                type: "Shoes",
+                company: "Nike",
+                saleoff: 50,
+                Catalogid: 1,
+                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
+            },
         ];
 
         if (type) {

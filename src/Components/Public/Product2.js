@@ -30,15 +30,19 @@ class Product2 extends React.Component {
             let saleprice = (<CurrencyFormat value={salePrice} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} />);
 
         return (
-                <span>
-                <Thumbnail className="product-item">
-                    <div className="product-item-thumnail">
+            <div className="col-xs-12 col-sm-12 col-md-2 col-lg-3">
+            <div className="thumbnail">
+                
+                    
                     <Image src={this.state.data.image} responsive />
-                    </div>
+                    
+
                     <h1>Hello, world!</h1>
+
                     <p>
                         <span>{this.state.data.name}</span>
                     </p>
+
                     <p>
                     <span className="real-price" > {realprice} </span>
                     <span className="saleoff-price" >{this.state.data.saleoff}%</span><br/>
@@ -47,8 +51,9 @@ class Product2 extends React.Component {
                     <Button>Lien he</Button>
                     </p>
                     
-                </Thumbnail>
-                </span>
+            </div>
+            </div>
+               
                    
                 );
             }

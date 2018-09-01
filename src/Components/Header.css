@@ -1,6 +1,7 @@
 .navbar-inverse {
-    background-color: rgba(253, 253, 253, 0.47);
-    border-color: #ffffff00;
+        background-color: rgba(255, 255, 255, 0.19);
+        background-image: linear-gradient( left, #ffffff , #ffffff00);
+        border-color: hsla(0, 22%, 18%, 0);
 }
 .dropdown-menu>li>a:hover{
     background-color: rgb(149, 186, 241)
@@ -55,7 +56,7 @@ img.exback{
     margin-bottom: 8px;
 }
 .dropdown-menu {
-    padding: 19px 0;
+    padding: 10px 0;
     border: 0px solid #ccc;
     border: 0px solid rgba(0,0,0,.15);
 }
@@ -86,7 +87,7 @@ NavItem.saleoff{
     color: rgb(247, 0, 0);
 }
 .navbar-nav>li>.dropdown-menu{
-    height: 150px;
+    height: 266px;
     box-shadow: 0px 0px 0px;
 }
 img.exback {
@@ -98,3 +99,21 @@ img.exback {
         box-shadow: 0px;
         -webkit-box-shadow: 0px;
 }
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: rgb(51, 51, 51);
+    background-color: #ffffff00;
+    border-radius: 2px;
+    border-top: 2px solid #374c73;
+}
+

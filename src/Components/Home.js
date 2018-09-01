@@ -24,7 +24,7 @@ class Home extends React.Component {
                 </ol>
                 <div className="carousel-inner">
                     <div className="item">
-                        <img data-src="holder.js/1558x889/auto/#777:#7a7a7a/text:First slide" alt="First slide" src="image/back10.jpg"/>
+                        <img data-src="holder.js/1558x889/auto/#777:#7a7a7a/text:First slide" alt="First slide" src="image/back14.jpeg"/>
                         <div className="container">
                             <div className="carousel-caption">
                                 <h1 className="slide1">Example headline.</h1>
@@ -34,7 +34,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div className="item">
-                        <img data-src="holder.js/1558x889/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" src="image/back6.jpg"/>
+                        <img data-src="holder.js/1558x889/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" src="image/back6.jpeg"/>
                         <div className="container">
                             <div className="carousel-caption">
                                 <h1>Another example headline.</h1>
@@ -44,7 +44,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div className="item active">
-                        <img data-src="holder.js/1558x889/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" src="image/back1.jpg"/>
+                        <img data-src="holder.js/1558x889/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" src="image/back13.jpeg"/>
                         <div className="container">
                             <div className="carousel-caption">
                                 <h1>One more for good measure.</h1>

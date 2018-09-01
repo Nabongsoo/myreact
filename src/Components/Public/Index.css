@@ -1,0 +1,24 @@
+div.panel-heading {
+    margin-top: 100px;
+}
+.container {
+     width: 100%; 
+     margin-top: 0px;
+}
+.container-fluid {
+    display: initial;
+    position: non;
+}
+
+div.col-md-3 {
+    width: 100%;
+}
+.navbar-fixed-top {
+    
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.container-fluid {
+    display: block;
+}

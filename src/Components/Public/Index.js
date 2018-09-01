@@ -1,7 +1,8 @@
 import React from 'react';
 import MenuCatalog from './MenuCatalog'
 import ProductList from './ProductList'
-import {Panel, Col, Row, Grid, Breadcrumb} from 'react-bootstrap'
+import {Panel, Col, Row, Grid, Breadcrumb, } from 'react-bootstrap'
+import './Index.css'
 
 class Index extends React.Component {
     constructor(_props) {
@@ -28,7 +29,7 @@ class Index extends React.Component {
         )
         if(this.state.path != "") {
             template.push(
-                <Breadcrumb.Item key={1} href="#">Trang Chủ</Breadcrumb.Item>
+                <Breadcrumb.Item key={1} href="/">Trang Chủ</Breadcrumb.Item>
             )
             }
             return template;
@@ -36,23 +37,22 @@ class Index extends React.Component {
 
     render() {
         let breadcrumb = this.buildBreadcrumb();
-        return (
-                <div>
-                <Panel bsStyle="primary" className="app-product">
+        return (  
+                <div className="container-fluid">
+                <Col xs={12}>
+                <Row>
                     <Panel.Heading>
-
-                    <Panel.Title>
-                    <Breadcrumb>
-                      {breadcrumb}
-                    </Breadcrumb>
-                    </Panel.Title>
-
+                        <Panel.Title>
+                        <Breadcrumb>
+                        {breadcrumb}
+                        </Breadcrumb>
+                        </Panel.Title>
                     </Panel.Heading>
-
+                </Row> 
                     <Panel.Body>
                     <Grid fluid={true}>
                     <Row className="show-grid">
-                        <Col xs={6} md={2}>
+                        <Col xs={12} md={2}>
                         
                         <MenuCatalog onMenuClick={this.onMenuClick.bind(this)}/>
                         </Col>
@@ -62,11 +62,10 @@ class Index extends React.Component {
                     </Row>
                     </Grid>
                     </Panel.Body>
-                </Panel>
- 
-                </div>
-                   
+                    </Col>
+                    </div>
+                    
                 );
             }
-        }
+                }
  export default Index;

@@ -27,7 +27,7 @@ class MenuCatalog extends React.Component {
                     <ListGroupItem id={3} onClick={this.menuCatalogHandle}>
                     Glasses 3
                     </ListGroupItem>
-                    </ListGroup>;
+                    </ListGroup>
                 </div>
                    
                 );
