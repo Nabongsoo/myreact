@@ -8,6 +8,8 @@ div.panel-heading {
 .container-fluid {
     display: initial;
     position: non;
+    padding-right: 0px;
+    padding-left: 0px; 
 }
 
 div.col-md-3 {

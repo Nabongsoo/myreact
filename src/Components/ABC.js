@@ -1,17 +1,13 @@
 import React from 'react';
 import DataUtils from './DataUtils';
-//import './ProductListM.css';
-import {Panel, Table, Button, ButtonToolbar} from 'react-bootstrap';
+import './ABC.css';
+import {Panel, Table, Button, Grid, Row, Col} from 'react-bootstrap';
 import $ from 'jquery'
 
-class ProductListM extends React.Component {
+class ABC extends React.Component {
     constructor(_props) {
         super(_props);
         this.onDetail = this.onDetail.bind(this)
-    }
-
-    onCreateNew (event){
-        window.location.href = "/productdetail?id=0";
     }
 
     onDetail(event){
@@ -20,6 +16,9 @@ class ProductListM extends React.Component {
         window.location.href = "/productdetail?id="+Id;
     }
     
+    onCreateNew (event){
+        window.location.href = "/productdetail?id=0";
+    }
 
     buildProductList() {
         let ProductList = DataUtils.getProductList()
@@ -29,12 +28,11 @@ class ProductListM extends React.Component {
             productList.push(
                 <tr key={i} id={ProductList[i].id} onDoubleClick={this.onDetail}>
                     <td>{parseInt(i) + 1}</td>
-                    <td>{ProductList[i].img}</td>
+                    <td>{ProductList[i].image}</td>
                     <td>{ProductList[i].name}</td>
                     <td>{ProductList[i].type}</td>
                     <td>{ProductList[i].price}</td>
                     <td>{ProductList[i].description}</td>
-                    <td>{ProductList[i].saleoff}</td>
                 </tr>
             )
         }
@@ -44,19 +42,19 @@ class ProductListM extends React.Component {
     render() {
         let productList = this.buildProductList();
         return (
-            
             <div className="container">
-
-            
-            <Panel.Collapse>
+            <Grid>
+            <Panel bsStyle="primary">
                 <Panel.Heading>
-                    <Panel.Title componentClass="h3">Products' List
+                    <Panel.Title componentClass="h3">Panel heading
                     <Button type="button" 
                     onClick={this.onCreateNew.bind(this)} bsStyle="primary" bsSize="large">
-                    Create New</Button></Panel.Title>
+                    Create New</Button>
+                    </Panel.Title>
                 </Panel.Heading>
-
                 <Panel.Body>
+                    <Row>
+                    <Col xs={12} sm={12}>
                     <Table striped bordered condensed hover >
                         <thead>
                             <tr>
@@ -66,19 +64,19 @@ class ProductListM extends React.Component {
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Description</th>
-                                <th>Sale off</th>
-
                             </tr>
                         </thead>
                         <tbody>
                             {productList}
                         </tbody>
                     </Table>
+                    </Col>
+                    </Row>
                 </Panel.Body>
-                </Panel.Collapse>
-            
+            </Panel>
+            </Grid>
             </div>
         );
     }
 }
-export default ProductListM;
+export default ABC;

@@ -7,6 +7,12 @@ import {
     NavItem,
     NavDropdown,
     Col,
+    Panel,
+    PanelBody,
+    FormGroup,
+    FormControl,
+    Button,
+    Grid,
 } from 'react-bootstrap'
 
 class Header extends React.Component {
@@ -49,13 +55,13 @@ class Header extends React.Component {
 
     buildMenus() {
         let menus = [];
+        
         if (this.props.logged === true) {
             menus.push((
                 
-                
-                <Navbar.Collapse key={2}  >
-                
-                    <Nav >
+                <Navbar.Collapse key={2}>
+                   
+                    <Nav className="menus" >
                         <NavDropdown eventKey={2} title="WOMEN" id="basic-nav-dropdown">
                         <img className="exback" src="image/exback7.jpg"/>
                         <div className="dropdown">
@@ -95,19 +101,11 @@ class Header extends React.Component {
                         </div>
                         </NavDropdown>
 
-                        <NavDropdown eventKey={5} title="Managerment" id="basic-nav-dropdown">
-                        <img className="exback" src="image/exbacklist.jpg"/>
-                        <div className="dropdown">
-                            <h2>Accounts List</h2>
-                            <MenuItem href="/acclist" eventKey={5.1}>Users' List</MenuItem>
-                            <MenuItem href="/productlist" eventKey={5.2}>Products' List</MenuItem>
-                        </div>
-                        </NavDropdown>
-
                         <NavItem className="saleoff" eventKey={6} href="/event">Sale</NavItem>
                     </Nav>
 
                     <Nav pullRight>
+                            <NavItem className="search"><Button className="search" type="button" href='' className="glyphicon glyphicon-search"></Button><FormControl className="search" type="text" placeholder="Search" /></NavItem>
                         <NavDropdown eventKey={8} title="Help" id="nav-help">
                             <NavItem id="contact" eventKey={1}>
                                 Contact us
@@ -128,12 +126,17 @@ class Header extends React.Component {
                             <NavItem id="profile" eventKey={5} href="/profile">
                                 Profile
                             </NavItem>
-                        </NavDropdown>
-                        
-                    </Nav>
-                   
+                            <MenuItem divider />
+                            <h4>Managerment</h4>
+                            <NavItem href="/acclist" eventKey={5.1}>
+                                Users' List
+                            </NavItem>
+                            <NavItem href="/abc" eventKey={5.2}>
+                               ABC
+                            </NavItem>
+                        </NavDropdown> 
+                    </Nav>   
                 </Navbar.Collapse>
-                
             ))
         }
         return menus;
@@ -148,14 +151,22 @@ class Header extends React.Component {
         // this.props.onLogout();
     }
 
+    handleChange(){
+        window.location.href = "/glasses A"
+    }
+   
     render() {
         let menus = this.buildMenus();
-        let headerTemplate = [];
+        let headerTemplate = []
+
         if (this.state.logged === true && window.location.pathname != "/login") {
             menus = this.buildMenus();
             headerTemplate.push((
-                <Col xs={12} sm={12} md={12} lg={12}>
+                <Grid key={4}>       
                 <Navbar key={1} fluid={true} fixedTop={true} inverse collapseOnSelect >
+                    <Panel className="saleoffpromotion" onClick={this.handleChange.bind(this)}>
+                        <Panel.Body>Basic panel example</Panel.Body>
+                    </Panel>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="/">
@@ -164,17 +175,15 @@ class Header extends React.Component {
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
-
-                    {menus}
-                </Navbar>
-                </Col>
-
+                    {menus}   
+                </Navbar> 
+                </Grid>
             ));
         }
-
         return (
             <div>
                 {headerTemplate}
+                
             </div>
         );
     }

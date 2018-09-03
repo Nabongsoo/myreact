@@ -1,0 +1,16 @@
+input[type=file] {
+    display: inline-block;
+}
+div.framefit.form-group {
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.thumbnail {
+    background-color: #fff0;
+    border: 0px solid #ddd;
+  
+}
+h2{
+    text-align: center;
+}

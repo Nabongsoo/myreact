@@ -3,7 +3,7 @@ import Product2 from './Product2'
 import DataUtils from '../DataUtils'
 import {Grid, Row, Col} from 'react-bootstrap'
 
-const Number_of_row = 3
+const Number_of_row = 4
 
 class ProductList extends React.Component {
 getProductList() {

@@ -19,8 +19,8 @@ const Home = Loadable({
     loading: Loading,
 });
 
-const ProductListM = Loadable({
-    loader: () => import('./ProductListM'),
+const ABC = Loadable({
+    loader: () => import('./ABC'),
     loading: Loading,
 });
 
@@ -60,7 +60,7 @@ class AppRouter extends React.Component {
                 <Route key={10} exact path="/glasses B" component = {()=> (<Index type={2} />)}/>
                 <Route key={11} exact path="/admin" component = {Index}/> 
                 <Route key={2} exact path="/login" component = {Login}/>
-                <Route key={3} exact path="/productlist" component = {ProductListM}/>
+                <Route key={3} exact path="/abc" component = {ABC}/>
                 <Route key={4} exact path="/sweet" component = {Sweet}/>
                 <Route key={5} exact path="/vegetable" component = {Vegetable}/>
                 <Route key={6} exact path="/acclist" component = {AccList}/>

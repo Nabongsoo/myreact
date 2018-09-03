@@ -54,3 +54,34 @@ button, input, select, textarea {
     margin-right: auto;
     margin-left: auto;
 }
+section {
+    width: 1595px;
+    height: 911px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+div.container {
+    width: 100%;
+    margin-top: 0px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+img.arivals{
+    width: 300px;
+    height: 390px;
+    border: 2px solid;
+}
+button.arivals.btn.btn-default {
+    width: 100px;
+    border: 0px;
+    float: none;
+}
+
+div.background-arivals {
+    position: fixed;
+    justify-content:center;
+    align-items: center;
+}
+div.arivals.row{
+    text-align: center;
+}

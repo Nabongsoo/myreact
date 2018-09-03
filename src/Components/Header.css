@@ -1,6 +1,6 @@
 .navbar-inverse {
         background-color: rgba(255, 255, 255, 0.19);
-        background-image: linear-gradient( left, #ffffff , #ffffff00);
+        background-image: linear-gradient(left, #ffffff , #ffffff00);
         border-color: hsla(0, 22%, 18%, 0);
 }
 .dropdown-menu>li>a:hover{
@@ -82,6 +82,7 @@ h2{
     color: #1b4e67;
     font-weight: bolder;
     font-size: 12pt; 
+    padding-left: 5px;
 }
 NavItem.saleoff{
     color: rgb(247, 0, 0);
@@ -116,4 +117,29 @@ img.exback {
     border-radius: 2px;
     border-top: 2px solid #374c73;
 }
-
+div.saleoffpromotion.panel.panel-default{
+    margin-bottom: 0px;
+}
+input.search.form-control {
+    display: block;
+    width: 210px;
+    margin-left: 0px;
+    float: right;
+    border-radius: 17px;
+}
+button.glyphicon.glyphicon-search.btn.btn-default{
+    width: 40px;
+    background-color: #ffffff00;
+    border: 0px;
+    margin-left: -55px;
+    border-radius: 16px;
+    padding: 6px;
+}
+li.search{
+    margin-top: -9px;
+}
+.h4, h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 20px;
+}
