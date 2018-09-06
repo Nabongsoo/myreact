@@ -1,0 +1,38 @@
+div.page-panel.panel.panel-info{
+    margin-top: 170px;
+    border-color: none;
+}
+div.panel-heading{
+    margin-top: 0px;
+    
+}
+.panel-info>.panel-heading {
+    color: #fff;
+    background-color: #475867;
+    border-color: #778c9e;
+}
+.btn-group-lg>.btn, .btn-lg{
+    padding: 10px 13px;
+    font-size: 14px;
+    line-height: 1.3333333;
+    border-radius: 28px;
+    float: right;
+    margin-top: -6px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #778c9e;
+    border-color: #d9dfe4;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #4b94d4;
+    border-color: #204d74;
+}
+.panel-primary>.panel-heading {
+    margin: 170px 20px 0px 20px;
+    height: 55px;
+    color: #fff;
+    background-color: #475867;
+    border-color: #778c9e;
+}

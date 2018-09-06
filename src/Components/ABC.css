@@ -27,13 +27,14 @@ div {
 }
 .panel-primary>.panel-heading {
     margin: 100px 0px 0px 0px;
-    height: 60px;
+    height: 55px;
     color: #fff;
     background-color: #475867;
     border-color: #778c9e;
 }
-.panel-heading {
+div.panel-heading {
     padding: 14px 15px;
+    margin-top: 0px;
 }
 .panel-body {
     padding: 0px;
@@ -41,4 +42,8 @@ div {
 }
 .panel-title {
     font-size: 22px;
+}
+div.panel.panel-info{
+    border-color: none;
+    margin-top: 170px;
 }

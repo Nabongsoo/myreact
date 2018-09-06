@@ -7,4 +7,41 @@ button.btn.btn-default {
     float: right;
     margin-right: 0px;
 }
+div.product-item.thumbnail{
+    display: inline-grid;
+}
+div.caption{
+    text-align: center;
+}
+p.buttonitem{
+    display: inline-flex;
+}
+button.detail.btn.btn-default{
+    margin-right: 5px;
+    border-radius: 25px;
+    width: 95px;
+    font-size: 18px;
+    margin-bottom: 7px;
+    width: 100px;
 
+}
+button.buynow.btn.btn-default{
+    margin-left: 5px;
+    border-radius: 25px;
+    width: 95px;
+    font-size: 18px;
+    width: 140px;
+    margin-bottom: 7px;
+}
+span.real-price{
+    padding-right: 15px;
+    text-decoration-line: line-through;
+    color: red;
+}
+span{
+    font-size: 14px;
+    font-weight: 800;
+}
+p.product-item-price{
+    font-size: 14px;
+}

@@ -3,16 +3,41 @@ import Product2 from './Product2'
 import DataUtils from '../DataUtils'
 import {Grid, Row, Col} from 'react-bootstrap'
 
-const Number_of_row = 4
+const Number_of_row = 3
 
 class ProductList extends React.Component {
-getProductList() {
-    let type = this.props.type;
-    return DataUtils.getProductList(type);
+    constructor(props){
+        super(props);
+        this.state = {ProductList: []};
+        this.buildProductList = this.buildProductList.bind(this);
+    }
+
+componentDidMount() {
+    this.getProductList();
 }
-buildProductList() {
-    let productListTemp = [];
-    let productData = this.getProductList();
+
+componentWillReceiveProps(props) {
+        
+    if(props.type != this.props.type) {console.log(3535)
+        this.getProductList();
+    }
+}
+
+getProductList() {
+    let type = this.props.type || null;
+    let filter = null;
+    if(type)
+        filter = {"catalog_id": type};
+        DataUtils.getList("/api/inventory/list", filter)
+        .then(this.buildProductList);
+}
+
+buildProductList(res) {
+    let productListTemplate = [];
+    let productData = []
+    if(res.Success && res.Data)
+            productData = res.Data;
+            
     let productList = [];
     for (let index in productData){
         productList.push(
@@ -21,7 +46,7 @@ buildProductList() {
          </Col>
         )
     if (productList.length == Number_of_row){
-            productListTemp.push(
+            productListTemplate.push(
                 <Row key={"row" + index}>
                 {productList}
                 </Row>
@@ -30,27 +55,22 @@ buildProductList() {
         }
     }
     if(productList.length && productList.length < Number_of_row){
-        productListTemp.push(
+        productListTemplate.push(
             <Row key={"row"}>
                 {productList}
                 </Row>
         )
     }
-    return productListTemp;
+    this.setState({ProductList: productListTemplate});
 }
     render() {
-        let productList = this.buildProductList()
+        
         return (
             
-                <div>
+                <div style={{marginTop: '10px'}}>
                     <Grid>
-                    <Row>
-                        <Col xs={12} md={3}>
-                        {productList}
-                        </Col>
-                    </Row>
-                    </Grid>
-                  
+                        {this.state.ProductList}        
+                    </Grid>   
                 </div>
                    
                 );

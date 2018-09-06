@@ -1,0 +1,29 @@
+.panel-primary>.panel-heading {
+    margin: 170px 20px 0px 20px;
+    height: 55px;
+    color: #fff;
+    background-color: #475867;
+    border-color: #778c9e;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #778c9e;
+    border-color: #d9dfe4;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #4b94d4;
+    border-color: #204d74;
+}
+.panel-title {
+    margin-top: 0px;
+    font-size: 25px;
+}
+.btn-lg {
+    padding: 9px 14px;
+    font-size: 12px;
+    line-height: 1.3333333;
+    border-radius: 28px;
+    float: right;
+    margin-top: -5px;
+}

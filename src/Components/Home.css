@@ -1,3 +1,6 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 section{
     width: 1595px;
     height: 911px;
@@ -62,7 +65,7 @@ section {
 }
 div.container {
     width: 100%;
-    margin-top: 0px;
+    margin-top: 20px;
     padding-right: 30px;
     padding-left: 30px;
 }
@@ -70,11 +73,6 @@ img.arivals{
     width: 300px;
     height: 390px;
     border: 2px solid;
-}
-button.arivals.btn.btn-default {
-    width: 100px;
-    border: 0px;
-    float: none;
 }
 
 div.background-arivals {
@@ -84,4 +82,21 @@ div.background-arivals {
 }
 div.arivals.row{
     text-align: center;
+}
+h1.slide1{
+    font-size: 60px;
+}
+div#home.carousel-caption{
+    text-align: center;
+}
+
+h1.slide1, h1.slide2, h1.slide3{
+    font-size: 60px;
+}
+a.button{
+    border: 1px solid;
+    padding: 9px;
+}
+p.home{
+margin: 0 0 20px;
 }

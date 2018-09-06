@@ -65,7 +65,7 @@ class Header extends React.Component {
                         <NavDropdown eventKey={2} title="WOMEN" id="basic-nav-dropdown">
                         <img className="exback" src="image/exback7.jpg"/>
                         <div className="dropdown">
-                            <h2>Women's Glasses</h2>
+                            <h2 className="header" >Women's Glasses</h2>
                             <MenuItem href="/glasses A" eventKey={2.1}>SunGlasses</MenuItem>
                             <MenuItem href="/glasses B" eventKey={2.2}>EyeGlasses</MenuItem>
                             <MenuItem href="/ourstory" eventKey={2.3}>New Arrivals</MenuItem>
@@ -78,7 +78,7 @@ class Header extends React.Component {
                         <NavDropdown eventKey={3} title="MEN" id="basic-nav-dropdown">
                         <img className="exback" src="image/exback2.jpg"/>
                         <div className="dropdown">
-                            <h2>Men's Glasses</h2>
+                            <h2 className="header" >Men's Glasses</h2>
                             <MenuItem href="/ourstory" eventKey={3.1}>SunGlasses</MenuItem>
                             <MenuItem href="/ourstory" eventKey={3.2}>EyeGlasses</MenuItem>
                             <MenuItem href="/ourstory" eventKey={3.3}>New Arrivals</MenuItem>
@@ -91,7 +91,7 @@ class Header extends React.Component {
                         <NavDropdown eventKey={4} title="KIDS" id="basic-nav-dropdown">
                         <img className="exback" src="image/exback16.jpg"/>
                         <div className="dropdown">
-                            <h2>Kids's Glasses</h2>
+                            <h2 className="header" >Kids's Glasses</h2>
                             <MenuItem href="/ourstory" eventKey={4.1}>SunGlasses</MenuItem>
                             <MenuItem href="/ourstory" eventKey={4.2}>EyeGlasses</MenuItem>
                             <MenuItem href="/ourstory" eventKey={4.3}>New Arrivals</MenuItem>
@@ -101,7 +101,7 @@ class Header extends React.Component {
                         </div>
                         </NavDropdown>
 
-                        <NavItem className="saleoff" eventKey={6} href="/event">Sale</NavItem>
+                        <NavItem className="saleoff" eventKey={6} href="/event"><p style={{color:'red'}}className="saleoff">Sale</p></NavItem>
                     </Nav>
 
                     <Nav pullRight>
@@ -127,12 +127,18 @@ class Header extends React.Component {
                                 Profile
                             </NavItem>
                             <MenuItem divider />
-                            <h4>Managerment</h4>
+                            <h4 >Managerment</h4>
                             <NavItem href="/acclist" eventKey={5.1}>
                                 Users' List
                             </NavItem>
                             <NavItem href="/abc" eventKey={5.2}>
-                               ABC
+                               Item Managerment
+                            </NavItem>
+                            <NavItem eventKey={2.2} href="/brandlist">
+                               Brand Managerment
+                            </NavItem> 
+                            <NavItem eventKey={2.3} href="/cataloglist">
+                                Catalog Managerment
                             </NavItem>
                         </NavDropdown> 
                     </Nav>   
@@ -165,7 +171,10 @@ class Header extends React.Component {
                 <Grid key={4}>       
                 <Navbar key={1} fluid={true} fixedTop={true} inverse collapseOnSelect >
                     <Panel className="saleoffpromotion" onClick={this.handleChange.bind(this)}>
-                        <Panel.Body>Basic panel example</Panel.Body>
+                        <Panel.Body>
+                            <p className="freemasks" >GET 3 FREE EYES MASKS ON ORDER $300+ ! USE CODE "RELAX"</p>
+                            <p className="shopnow" ><span> SHOP NOW  </span> <span><a className="detail"> *SEE DETAIL</a></span></p>
+                        </Panel.Body>
                     </Panel>
                     <Navbar.Header>
                         <Navbar.Brand>

@@ -1,0 +1,35 @@
+
+img.part4{
+    width: 100%;
+    padding-bottom: 20px;
+}
+div.part4a{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+div.part4b{
+    padding-left: 10px;
+    padding-right: 10px
+}
+div.carousel-caption{
+    float: left;
+    text-align: left;
+    margin-left: -25px;
+    font-size:12px;
+}
+a.btn.btn-lg.btn-default{
+    width: 180px;
+    border: 1px solid #e2e2e2d9;
+    float: none;
+    border-radius: 40px;
+    height: 40px;
+
+    padding: 8px 16px;
+    font-size: 16px;
+    line-height: 1.3333333;
+    color: #fff;
+    background-color: #efefef59;
+    border-color: #ccc;
+       
+}
+   

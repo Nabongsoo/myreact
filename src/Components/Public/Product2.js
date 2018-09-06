@@ -1,5 +1,5 @@
 import React from 'react';
-import {Jumbotron, Thumbnail , Image, Button} from 'react-bootstrap';
+import {Jumbotron, Thumbnail , Image, Button, Grid, Col, Row} from 'react-bootstrap';
 import CurrencyFormat from 'react-currency-format';
 import './Product2.css'
 
@@ -23,39 +23,41 @@ class Product2 extends React.Component {
             this.state.data = props.data;
         }
     }
+    
     render() {
-            let saleoffPrice = (this.state.data.price * (this.state.data.saleoff * 0.01));
-            let salePrice = this.state.data.price - saleoffPrice;
-            let realprice = (<CurrencyFormat value={this.state.data.price} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} />);
-            let saleprice = (<CurrencyFormat value={salePrice} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} />);
+        let salesOffPrice = parseFloat(this.state.data.inventory_price) * (parseFloat(this.state.data.inventory_saleoff)*0.01);
+        let salePrice = (<CurrencyFormat value={parseFloat(this.state.data.inventory_price) - salesOffPrice} decimalSeparator={'.'} displayType={'text'} thousandSeparator={','} prefix={'$'} />);
+        let realPrice = (<CurrencyFormat value={parseFloat(this.state.data.inventory_price)} decimalSeparator={'.'} displayType={'text'} thousandSeparator={','} prefix={'$'} />);
 
         return (
-            <div className="col-xs-12 col-sm-12 col-md-2 col-lg-3">
-            <div className="thumbnail">
+            <div>
+                <Grid>
+                    <Row>
+                        <Thumbnail className="product-item" src={this.state.data.inventory_img} alt="171x180">
+                    <h3 className="item">{this.state.data.inventory_name}</h3>
+                    <p className="product-item-price">
+                        <span className="real-price">
+                            { realPrice }
+                        </span>
+                        <span className="saleoff-price">
+                            -{parseFloat(this.state.data.inventory_saleoff)}%
+                        </span> <br/>
+                        <span className="sale-price">
+                            { salePrice }
+                        </span>
+                        <br/>
+                        
+                    </p>
+                    <p className="buttonitem">
+                        <Button className="detail" bsStyle="default">Detail</Button>    
+                        <Button className="buynow" bsStyle="default">Buy now</Button>
+                    </p>
+                </Thumbnail>
+                    </Row>
+                </Grid>
                 
-                    
-                    <Image src={this.state.data.image} responsive />
-                    
-
-                    <h1>Hello, world!</h1>
-
-                    <p>
-                        <span>{this.state.data.name}</span>
-                    </p>
-
-                    <p>
-                    <span className="real-price" > {realprice} </span>
-                    <span className="saleoff-price" >{this.state.data.saleoff}%</span><br/>
-                   
-                    <span className="sale-price" >{saleprice}</span>
-                    <Button>Lien he</Button>
-                    </p>
-                    
             </div>
-            </div>
-               
-                   
-                );
-            }
+        );
+        }
         }
  export default Product2;

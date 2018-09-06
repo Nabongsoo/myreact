@@ -3,16 +3,16 @@
     margin: 0px 20px 0px 20px;
 }
 .btn-group-lg>.btn, .btn-lg {
-    padding: 10px 13px;
-    font-size: 14px;
+    padding: 9px 14px;
+    font-size: 12px;
     line-height: 1.3333333;
     border-radius: 28px;
     float: right;
-    margin-top: -6px;
+    margin-top: -5px;
 }
 .panel-primary>.panel-heading {
-    margin: 100px 20px 0px 20px;
-    height: 60px;
+    margin: 170px 20px 0px 20px;
+    height: 55px;
     color: #fff;
     background-color: #475867;
     border-color: #778c9e;
@@ -31,6 +31,6 @@
     border-color: #204d74;
 }
 .panel-title {
-    margin-top: 3px;
+    margin-top: 0px;
     font-size: 25px;
 }

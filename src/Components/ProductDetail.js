@@ -1,10 +1,11 @@
 import React from 'react'
 import DataUtils from './DataUtils';
 import queryString from 'query-string'
-import { Row, Col, Grid, Image, ListGroup, ListGroupItem, Button, FormControl, FormGroup, ControlLabel, Panel,HelpBlock } from 'react-bootstrap'
+import { Row, Col, Grid, Image, ListGroup, ListGroupItem, Button, FormControl, FormGroup, ControlLabel, Panel,HelpBlock, Radio } from 'react-bootstrap'
 import "./ProductDetail.css"
+import UploadFile from './Administration/UploadFile'
 import CurrencyFormat from 'react-currency-format';
-
+import './ProductDetail.css'
 function FieldGroup({ id, label, help, ...props }) {
 
     
@@ -19,7 +20,7 @@ function FieldGroup({ id, label, help, ...props }) {
 class ProductDetail extends React.Component {
     constructor(_props) {
         super(_props);
-        this.state = { Id: null, info: null, isEdit: false};
+        this.state = { Id: null, info: null, isEdit: false, brandList: [], catalogList:[] };
         this.state.Id = this.getIdFromQueryString();
         if (this.state.Id === 0){
             this.state.isEdit = true;
@@ -27,24 +28,62 @@ class ProductDetail extends React.Component {
         }
         this.state.info = this.getProduct();
         this.handleChange = this.handleChange.bind(this);
+        this.buildBrandList = this.buildBrandList.bind(this);
 
     }
 
-    onEdit(_event) {
+    onEdit(event) {
         this.setState({isEdit:true})
     }
 
-    onRemove(_event){
-        DataUtils.removeProduct(this.state.info);
-    }
+    onSave(event) {
+        // if(this.state.info.id === 0){
+        //     DataUtils.createProduct(this.state.info);
+        // }else {
+        //     console.log('[MY-DEBUG] this.state = ', this.state);
+        //     DataUtils.saveProduct(this.state.info); // No bi loi o day, vi no ko hieu ham `saveProduct`
+        // }
 
-    onSave(_event) {
-        if(this.state.info.id === 0){
-            DataUtils.createProduct(this.state.info);
-        }else {
-            DataUtils.saveProduct(this.state.info)
+        let api = "/api/inventory/update";
+        let saveData = this.state.info;
+        if(this.state.Id == 0) { 
+            api = "/api/inventory/create";
+            saveData['id'] = 0;
+            delete saveData['inventory_id'];
+        } else {
+            saveData['id'] = saveData['inventory_id'];
+            //delete saveData['inventory_id'];
         }
-       
+
+        DataUtils.save(api, saveData)
+        .then((res)=>{
+            console.log('SAVE res = ', res);
+            let msg = "Cập nhật ";
+            if(this.state.info.id == 0) {
+                msg = "Tạo mới "
+            }
+            if(res.Success) {
+                window.jQuery.toast({
+                    heading: 'Thành Công',
+                    text: msg + 'sản phẩm thành công.',
+                    showHideTransition: 'slide',
+                    position: 'bottom-right',
+                    icon: 'success',
+                });
+                setTimeout((e)=>{window.location.href="/abc"}, 1000);
+            } else {
+                window.jQuery.toast({
+                    heading: 'Lỗi',
+                    text: msg + 'sản phẩm thất bại.',
+                    showHideTransition: 'slide',
+                    position: 'bottom-right',
+                    icon: 'error'
+                })
+            }
+        }).catch(err => {
+            console.log('ERROR = ', err);
+        });
+
     }
 
     buildeditproductTemplate(){
@@ -53,33 +92,35 @@ class ProductDetail extends React.Component {
               <FieldGroup
                 id="formControlsText"
                 type="text"
-                name="name"
+                name="inventory_name"
                 label="Product's Name"
                 placeholder="Enter Product's Name"
-                defaultValue = {this.state.info.name}
+                defaultValue = {this.state.info.inventory_name}
                 onChange={this.handleChange}
               />
 
-              <FieldGroup
-                id="formControlsimage"
-                type="img"
-                label="Image"
-                name="img"
-                defaultValue = {this.state.info.img}
-                onChange={this.handleChange}
-              />
+               <UploadFile label="Ảnh Sản Phẩm" onChange={this.onImageChange.bind(this)} />
 
-              <FieldGroup
-                id="formControlsSaleoff"
-                type="number"
-                label="Price"
-                name="price"
-                placeholder="Enter Price"
-                defaultValue = {this.state.info.price}
-                onChange={this.handleChange}
-              />
+              
+                <FormGroup controlId={"formControlsCatalog"}>
+                <ControlLabel>Danh Mục Sản Phẩm</ControlLabel>
+                    <FormControl onChange= {this.handleChange} defaultValue={this.state.info.catalog_id} name="catalog_id" 
+                    componentClass="select" 
+                    placeholder="Nhập danh mục sản phẩm">
+                        {this.state.catalogList}
+                    </FormControl>  
+                </FormGroup>
 
-              <FieldGroup
+              <FormGroup controlId={"formControlsBrand"}>
+                <ControlLabel>Thương Hiệu</ControlLabel>
+                    <FormControl onChange= {this.handleChange} defaultValue={this.state.info.brand_id} name="brand_id" 
+                    componentClass="select" 
+                    placeholder="Nhập thương hiệu">
+                        {this.state.brandList}
+                    </FormControl>  
+                </FormGroup>
+
+             {/*} <FieldGroup
                 id="formControlsBrand"
                 type="text"
                 label="Brand"
@@ -87,34 +128,89 @@ class ProductDetail extends React.Component {
                 placeholder="Enter Brand"
                 defaultValue = {this.state.info.company}
                 onChange={this.handleChange}
-              />
+              />*/}
 
-               <FieldGroup
-                id="formControlsDes"
-                type="text"
-                label="Description"
-                placeholder="Enter description"
-                defaultValue = {this.state.info.description}
+              <FieldGroup
+                id="formControlsPrice"
+                type="number"
+                label="Price"
+                name="inventory_price"
+                placeholder="Enter Price"
+                defaultValue = {this.state.info.inventory_price}
                 onChange={this.handleChange}
               />
+
+              <FieldGroup
+                id="formControlsSaleoff"
+                type="number"
+                name="inventory_saleoff"
+                label="Giảm Giá"
+                placeholder="Nhập Phần Trăm"
+                value={this.state.info.inventory_saleoff}
+                onChange= {this.handleChange}
+              />
+
+               <FormGroup controlId="formControlsDescription">
+                <ControlLabel>Mô Tả</ControlLabel>
+                <FormControl name="inventory_description" onChange= {this.handleChange} defaultValue={this.state.info.inventory_description} componentClass="textarea" placeholder="textarea" />
+              </FormGroup> 
               
-              <Button type="submit" onClick={this.onSave.bind(this)}> Submit</Button>
+              <Button type="button" onClick={this.onSave.bind(this)}> Submit</Button>
             </form>
           );
           return formInstance;
     }
     
-    
     componentDidMount() {
-        console.log( window.jQuery(".product-image"))
-        window.jQuery(".product-image").elevateZoom()
-        
+        this.buildBrandList();
+        this.buildCatalogList();
+        window.jQuery(".product-image").elevateZoom(
+            {zoomWindowPosition: 1.5, borderSize: 1}
+        );
+    }
+    
+    buildBrandList() {
+
+        DataUtils.getList("/api/brand/list")
+        .then((res) => {
+            let _brandList = [];
+            if(res.Success) {
+                for(let i in res.Data) {
+                    _brandList.push(
+                        <option key={i} value={res.Data[i].brand_id}>{res.Data[i].brand_name}</option>
+                    )
+                }
+            }
+            this.setState({brandList: _brandList});
+        })
     }
 
-    handleChange(_e){
-        let name = _e.target.name;
+    buildCatalogList() {
+        DataUtils.getList("/api/catalog/list")
+        .then((res) => {
+            let _catalogList = [];
+            if(res.Success) {
+                for(let i in res.Data) {
+                    _catalogList.push(
+                        <option key={i} value={res.Data[i].catalog_id}>{res.Data[i].catalog_name}</option>
+                    )
+                }
+            }
+            this.setState({catalogList: _catalogList});
+        })
+    }
+
+    handleChange(event){
+        let name = event.target.name;
         let _info = this.state.info;
-        _info[name] = _e.target.value;
+        _info[name] = event.target.value;
+        if(name == "brand_id") {
+            _info['inventory_brand'] = window.jQuery(event.target)[0].selectedOptions[0].innerText;
+        }
+
+        if(name == "catalog_id") {
+            _info['inventory_catalog'] = window.jQuery(event.target)[0].selectedOptions[0].innerText;
+        }
         this.setState({info: _info});
     }
 
@@ -125,8 +221,8 @@ class ProductDetail extends React.Component {
             productDetail.push(
                 <div key={1}>
                     <span>Name: {product.name} </span>
-                    <span>Name: {product.type} </span>
-                    <span>Name: {product.price} </span>
+                    <span>Price: {product.price} </span>
+                    <span>Description: {product.description} </span>
                 </div>
             );
         }
@@ -136,19 +232,34 @@ class ProductDetail extends React.Component {
     getProduct() {
         let product = null;
         if (this.state.Id !== 0) {
-            product = DataUtils.getProduct(this.state.Id);
-        } else {
-            product = {
+            DataUtils.getItem("/api/inventory/item", this.state.Id)
+            .then((res) => {
+                if(res.Success && res.Data) {
+                    this.setState({info: res.Data});
+                }
+            });
+         } else {
+            // product = {
                
-                id: 0,
-                name:"",
-                image:"",
-                price: 0,
-                type:"",
-                company: "",
-                saleoff: 0,
-                description:""
+            //     inventory_id: 0,
+            //     inventory_name:"",
+            //     inventory_image:"",
+            //     inventory_price: 0,
+            //     inventory_type:"",
+            //     inventory_company: "",
+            //     inventory_saleoff: 0,
+            //     inventory_description:""
             
+            // }
+            product = {
+                id: 0,
+                inventory_name: "",
+                inventory_img: "",
+                inventory_price: 0,
+                inventory_catalog: "",
+                inventory_brand: "",
+                inventory_saleoff: 0,
+                inventory_description: ""
             }
         }
         return product;
@@ -166,57 +277,106 @@ class ProductDetail extends React.Component {
         return Obj.id !== undefined?Obj.id: null;
     }
 
+    editHandle(event) {
+        this.setState({isEdit: true});
+    }
+
+    removeHandle(event) {
+        //DataUtils.remove("/api/inventory/delete", this.state.info.inventory_id);
+        if(!this.state.info.inventory_id)
+        return;
+
+    DataUtils.remove("/api/inventory/delete", this.state.info.inventory_id)
+    .then((res)=>{
+        if(res.Success) {
+            window.jQuery.toast({
+                heading: 'Success',
+                text: 'Removing item successfully',
+                showHideTransition: 'slide',
+                position: 'bottom-right',
+                icon: 'success',
+            });
+            setTimeout((e)=>{window.location.href="/abc"}, 1000);
+        } else {
+            window.jQuery.toast({
+                heading: 'Error',
+                text: 'Fail to remove item',
+                showHideTransition: 'slide',
+                position: 'bottom-right',
+                icon: 'error'
+            })
+        }
+    });
+    }
+
+    
+    onImageChange(res) {
+        if(res.Success) {
+            let imgPath = "http://gunivn.com/guni/" + res.Data.filepath;
+            let _info = this.state.info;
+            _info['inventory_img'] = imgPath;
+            this.setState({info: _info});
+        }
+    }
+
     buildImage() {
         let imageTemplate = [];
         if (this.state.info !== null) {
             imageTemplate.push(
                 <div key={1}>
-                    <Image className="product-image" src={this.state.info.image} responsive />
+                    <Image className="product-image" onMouseOver={this.componentDidMount.bind(this)} src={this.state.info.inventory_img} responsive />
                 </div>
             )
         }
         return imageTemplate;
     }
 
-
     buildDescription() {
         let desTemp = [];
         if (this.state.info !== null) {
-            let saleoffPrice = (this.state.info.price * (this.state.info.saleoff * 0.01));
-            let salePrice = this.state.info.price - saleoffPrice;
+            let saleoffPrice = parseFloat(this.state.info.inventory_price) * (parseFloat(this.state.info.inventory_saleoff)*0.01);
+            let salePrice = parseFloat(this.state.info.inventory_price - saleoffPrice);
             let saleoffPriceTemp = (<CurrencyFormat value={salePrice} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} />);
 
             let HeaderProduct = (
-            <div>
-                <span>{this.state.info.name}</span>
-                <span className="product-detail-tool product-detail-edit"><a href="javascript:void(0)" onClick= {this.onEdit.bind(this)}>Edit</a></span>
-                <span className="product-detail-tool product-detail-detele"><a href="javascript:void(0)" onClick= {this.onRemove.bind(this)}>Remove</a></span>
+            <div className="tools">
+                <span>{this.state.info.inventory_name}</span>
+                <span className="product-detail-tool product-detail-edit"><a className="tools" href="javascript:void(0)" onClick= {this.onEdit.bind(this)}>Edit</a></span>
+                <span className="product-detail-tool product-detail-detele"><a className="tools" href="javascript:void(0)" onClick= {this.removeHandle.bind(this)}>Remove</a></span>
             </div>
 
             );
 
-        
             console.log(saleoffPrice)
-
             
             desTemp.push(
                 <div key={2}>
+                    <a className="catalog" href="#">{this.state.info.inventory_catalog}</a>
                     <ListGroup>
                         <ListGroupItem className="des-name" header={HeaderProduct} >
-                            <span className="product-name">Thuong Hieu: {this.state.info.company} </span>
+                            <span className="product-name">Brand: <span>{this.state.info.inventory_brand}</span> </span>
 
                         </ListGroupItem>
                         <ListGroupItem className="des-price" header={saleoffPriceTemp}>
-                            <span> Tiet kiem: {this.state.info.saleoff}% </span><br />
-                            <span> Gia thi truong:
+                            <span className="style"> Save: {this.state.info.inventory_saleoff}% </span><br />
                             <span>
-                                    <CurrencyFormat value={this.state.info.price} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
+                                    <CurrencyFormat 
+                                        value={saleoffPrice} 
+                                        decimalSeparator={'.'} 
+                                        displayType={'text'} 
+                                        thousandSeparator={','} prefix={'$'} 
+                                        renderText={value => <span> ({value})</span>} 
+                                    />
+                            </span>
+                            <span> Original Price:
+                            <span className="style">
+                                    <CurrencyFormat value={(parseFloat(this.state.info.inventory_price))} decimalSeparator={'.'} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <span>{value}</span>} />
                             </span>
                             </span>
 
                         </ListGroupItem>
                         <ListGroupItem header="">
-                            <span dangerouslySetInnerHTML={{ __html: this.state.info.description }}></span>
+                            <span className="style" dangerouslySetInnerHTML={{ __html: this.state.info.inventory_description }}></span>
                         </ListGroupItem>
                     </ListGroup>
                 </div>
@@ -249,23 +409,39 @@ class ProductDetail extends React.Component {
     }
 
         let imageTemplate = this.buildImage()
-        let productDetail = this.buildProductDetail();
         let desTemp = this.buildDescription();
         return (
-            <div className="product-detail">
-                <Grid>
+            
+                <Grid className="productshow">
                     <Row className="show-grid">
-                        <Col className="detail-image" xs={12} sm={5} md={5}>
+                        <Col className="detail-image" xs={12} md={7}>
                             {imageTemplate}
                         </Col>
-                        <Col className="detail-des" xs={12} md={7}>
+                        <Col className="detail-des" xs={12} sm={5} md={5}>
                             {desTemp}
+                            <div>
+                            <h4>Choose Color:</h4>
+                            <FormGroup className="color">
+                            <Radio name="radioGroup" inline>
+                                Silver
+                            </Radio>{' '}
+                            <Radio name="radioGroup" inline>
+                                Black
+                            </Radio>{' '}
+                            <Radio name="radioGroup" inline>
+                                Gold
+                            </Radio>
+                            </FormGroup>
+                            <Button className="Addtocard" >Add to card</Button>
+                            <Button className="Buynow" >Buy now</Button>
+                            </div>
                         </Col>
                     </Row>
+                    <div>
+                        
+                    </div>
                         
                 </Grid>
-                {productDetail}
-            </div>
         )
     }
 

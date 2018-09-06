@@ -52,8 +52,8 @@ img.exback{
 }
 .navbar-nav {
     margin: auto;
-    margin-top: 14px;
-    margin-bottom: 8px;
+    margin-top: 19px;
+    margin-bottom: 4px;
 }
 .dropdown-menu {
     padding: 10px 0;
@@ -70,23 +70,22 @@ a{
     word-spacing: 2px;
     padding-bottom: 2px;
 }
-h2{
+h2.header{
     margin-top: 6px;
     font-weight: normal;
     color: #153852;
     margin-bottom: 20px;
+    text-align: left;
     
 }
 .navbar-inverse .navbar-nav>li>a {
     font: MavenPro-Bold;
-    color: #1b4e67;
     font-weight: bolder;
     font-size: 12pt; 
     padding-left: 5px;
+    color: #172035;
 }
-NavItem.saleoff{
-    color: rgb(247, 0, 0);
-}
+
 .navbar-nav>li>.dropdown-menu{
     height: 266px;
     box-shadow: 0px 0px 0px;
@@ -142,4 +141,46 @@ li.search{
     font-size: 16px;
     font-weight: 700;
     margin-left: 20px;
+}
+div.saleoffpromotion.panel.panel-default{
+    border-radius: 0px;
+    border: 0px;
+    background-color: rgb(230, 190, 77);
+}
+p.freemasks{
+        margin: 0 0 0px;
+        padding-top: 8px;
+        font-weight: bolder;
+        word-spacing: 2px;
+        letter-spacing: 0.5px;
+        color:#151515;
+        text-align: center;
+        font-size: 13.8px;
+}
+p.shopnow{
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 13.5px;
+}
+a.detail{
+    text-decoration-line: underline;
+    font-size: 11.5px;
+    text-align: center;
+}
+.dropdown-menu>li>a:hover {
+    background-color: rgb(191, 216, 253);
+}
+img.app-logo{
+     
+        display: block;
+        width: 170px;
+        margin-top: 17px;
+}
+.navbar-brand>img {
+    display: block;
+    width: 170px;
+    height: 35px;
+}
+p.saleoff{
+    color: rgb(247, 0, 0);
 }

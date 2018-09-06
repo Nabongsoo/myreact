@@ -1,16 +1,78 @@
+let $ = require("jquery");
+const STORE_ID = 1;
 
 let obj = {
-
-    saveProduct(data) {
-        //call api
+    uploadFile() {
+        const data = new FormData();
+        let files = $("#uploadFile")[0].files;
+        data.append('uploadFile', files[0]);
+        //data.append('filename', this.fileName.value);
+        return $.when(
+        $.ajax({
+            url:"http://gunivn.com/guni/index.php/api/upload",
+            data: data,
+            type:"post",
+            contentType:false,
+            processData:false,
+            cache:false,
+            dataType:"json"
+          })
+        );
     },
-
-    removeProduct(data) {
-
+    getItem(api, id) {
+        let _url = "http://gunivn.com/guni/index.php"+api + "?id="+id+"&store_id=" + STORE_ID;
+        return $.when(
+            $.ajax({
+                method: "GET",
+                url: _url,
+                dataType: 'json'
+            })
+        );
     },
-
-    createProduct() {
-
+    getList(api, filter) {
+        let _url = "http://gunivn.com/guni/index.php"+api + "?store_id=" + STORE_ID;
+        if(filter) {
+            _url += ("&"+ $.param(filter));
+        }
+        return $.when(
+            $.ajax({
+                method: "GET",
+                url: _url,
+                dataType: 'json'
+            })
+        );
+    },
+    create(api, dataSave) {
+        return $.when(
+            $.ajax({
+                method: "POST",
+                url: "http://127.0.0.1:8000"+api + "?store_id=" + STORE_ID,
+                dataType: 'json',
+                data: {data: dataSave}
+            })
+        );
+    },
+    remove(api, id) {
+        return $.when(
+            $.ajax({
+                method: "POST",
+                url: "http://gunivn.com/guni/index.php" + api,
+                dataType: 'json',
+                data: JSON.stringify({id: id, store_id: STORE_ID})
+            })
+        );
+    },
+    save(api, dataSave) {
+        console.log('[MINE] api, dataSave = ', api, JSON.stringify(dataSave));
+        dataSave['store_id'] = STORE_ID
+        return $.when(
+            $.ajax({
+                method: "POST",
+                url: "http://gunivn.com/guni/index.php" + api,
+                dataType: 'json',
+                data: JSON.stringify({data: dataSave})
+            })
+        );
     },
 
     getUserList() {
@@ -73,9 +135,9 @@ let obj = {
                 image: "image/RW.jpg",
                 price: 70,
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 1,
+                catalogid: 1,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -84,9 +146,9 @@ let obj = {
                 image: "image/B-W.jpg",
                 price: 80,
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 1,
+                catalogid: 1,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -95,9 +157,9 @@ let obj = {
                 image: "image/BLACK.jpg",
                 price: "$70",
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 3,
+                catalogid: 3,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -106,9 +168,9 @@ let obj = {
                 image: "image/BLACK.jpg",
                 price: "$70",
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 1,
+                catalogid: 1,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
 
@@ -118,9 +180,9 @@ let obj = {
                 image: "image/RW.jpg",
                 price: 70,
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 2,
+                catalogid: 2,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -129,9 +191,9 @@ let obj = {
                 image: "image/B-W.jpg",
                 price: 80,
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 3,
+                catalogid: 3,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
             {
@@ -140,9 +202,9 @@ let obj = {
                 image: "image/B-W.jpg",
                 price: 80,
                 type: "Shoes",
-                company: "Nike",
+                brand: "Nike",
                 saleoff: 50,
-                Catalogid: 1,
+                catalogid: 1,
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
             },
         ];

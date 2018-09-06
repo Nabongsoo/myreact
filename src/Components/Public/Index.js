@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuCatalog from './MenuCatalog'
 import ProductList from './ProductList'
+
 import {Panel, Col, Row, Grid, Breadcrumb, } from 'react-bootstrap'
 import './Index.css'
 
@@ -25,11 +26,11 @@ class Index extends React.Component {
     buildBreadcrumb(){
         let template = [];
         template.push(
-            <Breadcrumb.Item key={0} href="/">Home </Breadcrumb.Item>
+            <Breadcrumb.Item key={0} href="/glasses A">Home </Breadcrumb.Item>
         )
         if(this.state.path != "") {
             template.push(
-                <Breadcrumb.Item key={1} href="/">Trang Chủ</Breadcrumb.Item>
+                <Breadcrumb.Item key={1} href="#">Trang Chủ</Breadcrumb.Item>
             )
             }
             return template;
@@ -50,7 +51,7 @@ class Index extends React.Component {
                     </Panel.Heading>
                 </Row> 
                     <Panel.Body>
-                    <Grid fluid={true}>
+                    <Grid className="menucatalog" fluid={true}>
                     <Row className="show-grid">
                         <Col xs={12} md={2}>
                         
@@ -58,6 +59,7 @@ class Index extends React.Component {
                         </Col>
                         <Col xs={12} md={10}>
                         <ProductList type={this.state.type}/>
+                        
                         </Col>
                     </Row>
                     </Grid>

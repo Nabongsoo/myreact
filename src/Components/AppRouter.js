@@ -5,7 +5,12 @@ import Header from './Header';
 import Profile from './Profile';
 import ProductDetail from './ProductDetail'
 import Index from './Public/Index'
+import BrandList from './Administration/BrandList';
+import Brand from './Administration/Brand';
+import CatalogList from './Administration/CatalogList';
+import Catalog from './Administration/Catalog';
 import MenuCatalog from './Public/MenuCatalog';
+import Part3 from './Part3';
 
 const Loading = () => <div>Loading...</div>;
 
@@ -66,6 +71,11 @@ class AppRouter extends React.Component {
                 <Route key={6} exact path="/acclist" component = {AccList}/>
                 <Route key={7} exact path="/profile" component = {Profile}/>
                 <Route key={8} exact path="/productdetail" component = {ProductDetail}/>
+                <Route key={12} path="/brandlist" component={BrandList}/>
+                <Route key={13} path="/brand" component={Brand}/>
+
+                <Route key={14} path="/cataloglist" component={CatalogList}/>
+                <Route key={15} path="/catalog" component={Catalog}/>
                
                 </Switch>
             </Router>

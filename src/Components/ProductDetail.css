@@ -55,3 +55,34 @@ div.page-panel.product-detail.panel.panel-primary{
     width: 440px;
     margin-left: 0px;
 }
+div.productshow.container{
+    margin-top:170px;
+}
+div.form-group {
+    margin: auto;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+button.Buynow.btn.btn-default{
+        padding: 7px 12px;
+        color: #fff;
+        background-color: #486077;
+        border-color: #ccc;
+        margin-right: 8px;
+        width: 120px;
+}
+button.Addtocard.btn.btn-default{
+padding: 7px 12px;
+font-weight: 600;
+width: 200px;
+}
+ a.tools{
+    color: rgb(182, 182, 182);
+}
+a.catalog{
+    color: black;
+}
+span.style {
+    font-size: 14px;
+    font-weight: 500;
+}
