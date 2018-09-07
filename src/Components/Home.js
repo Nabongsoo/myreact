@@ -68,6 +68,10 @@ class Home extends React.Component {
             <div className="container" >
             <Part3/>
             </div>
+            
+            <div>
+                <Part4/>
+            </div>
 
             <div>
                 <Footer/>
